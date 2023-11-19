@@ -1,11 +1,24 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gestor de Tareas</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tareas Pendientes</title>
+  <link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
-    
+  <div class="contenedor">
+    <h1>Tareas Pendientes</h1>
+    <div>
+      <input type="text" id="ingresoTarea" placeholder="Nueva tarea">
+      <input type="text" id="descriptionInput" placeholder="Descripción">
+      <button onclick="añadirTarea()">Agregar tarea</button>
+    </div>
+    <ul id="listaTareas"></ul>
+    <button onclick="limpiarHtml()">Limpiar tareas</button>
+
+
+  </div>
+  <script src="Scripts/script.js"></script>
 </body>
 </html>
