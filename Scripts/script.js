@@ -1,67 +1,37 @@
-document.addEventListener('DOMContentLoaded', function() {
-    cargarTareas();
-  });
+function agregarTarea(){
+
+  var tarea = document.getElementById("ingresoTarea");
+  var descripcion = document.getElementById("ingresoDescripcion");
+  var lista = document.getElementById('listaTareas');
+
+  console.log(tarea.value);
+  console.log(descripcion.value);
+
+  const li = document.createElement('li');
+  const des = document.createElement('div');
   
+  des.innerHTML = `<strong>${tarea.value}</strong>: ${descripcion.value}
+  <button>123</button>`;
+
+  li.appendChild(des);
+  lista.appendChild(li);
 
 
-  function añadirTarea() {
-    var ingresoTarea = document.getElementById('ingresoTarea');
-    var listaTareas = document.getElementById('listaTareas');
-  
-    if (ingresoTarea.value.trim() !== '') {
-      var tareaIndividual = document.createElement('li');
-      tareaIndividual.textContent = ingresoTarea.value;
-  
-      
-      listaTareas.appendChild(tareaIndividual);
-  
-      guardarTarea(ingresoTarea.value);
-      ingresoTarea.value = '';
-    }
-  }
-  
-  
-  
-  function guardarTarea(tarea) {
-    var tareas = cargarTareas();
-    tareas.push({ task: tarea, completada: false });
-    localStorage.setItem('tareas', JSON.stringify(tareas));
-  }
-  
-
-  
-  function cargarTareas() {
-    var listaTareas = document.getElementById('listaTareas');
-    var tareas = extraerTareas();
-
-  
-    tareas.forEach(function(tarea) {
-      var elemento = document.createElement('li');
-      elemento.textContent = listaTareas.value; // Acceder a la propiedad task del objeto tarea
-      listaTareas.appendChild(elemento);
-    });
-  
-
-    return tareas; // Agregado el retorno de las tareas
-  }
-
-  
-  function extraerTareas() {
-    var tareas = localStorage.getItem('tareas');
-    return tareas ? JSON.parse(tareas) : [];
-  }
-  
-
-  function limpiarHtml() {
-    var listaTareas = document.getElementById('listaTareas');
-  
-    listaTareas.innerHTML = '';
-  
-    limpiarTodo();
-  }
 
 
-  function limpiarTodo() {
-    localStorage.removeItem('tareas');
-  }
-  
+  //regresa el cuadro de texto(tarea) a un valor vacio 
+  tarea.value = "";
+  descripcion.value = "";
+
+}
+
+
+
+
+
+
+
+
+//llamar al boton para ejecutar el codigo
+document.getElementById('btnAgregar').addEventListener('click', agregarTarea);
+
